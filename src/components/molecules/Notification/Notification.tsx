@@ -1,17 +1,6 @@
 import { Button } from "../../atoms/Button/Button";
 import "./notification.css";
-
-export type NotificationData = {
-  id: string;
-  message: string;
-  read: boolean;
-};
-
-export type NotificationProps = {
-  notification: NotificationData;
-  onToggleRead: (id: string) => void;
-  onDismiss?: (id: string) => void;
-};
+import type { NotificationProps } from "../../../types";
 
 export default function Notification({
   notification: { id, message, read },

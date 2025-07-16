@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { fn } from "@storybook/test";
 
-import Notification, { NotificationData } from "./Notification";
+import Notification from "./Notification";
+import type { NotificationData } from "../../../types";
 
 export const ActionsData = {
   onToggleRead: fn(),
