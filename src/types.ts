@@ -21,7 +21,11 @@ export type NotificationProps = {
   onDismiss?: (id: string) => void;
 };
 
-//Page Organism
-export type User = {
-  name: string;
+//NotificationList Organism
+export type NotificationListProps = {
+  notifications: NotificationData[];
+  loading?: boolean;
+  onToggleRead: (id: string) => void;
+  onDismiss: (id: string) => void;
+  // optional: onMarkAllRead?: () => void
 };
