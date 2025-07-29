@@ -17,7 +17,9 @@ export type NotificationData = {
 
 export type NotificationProps = {
   notification: NotificationData;
+  // eslint-disable-next-line no-unused-vars
   onToggleRead: (id: string) => void;
+  // eslint-disable-next-line no-unused-vars
   onDismiss?: (id: string) => void;
 };
 
@@ -25,7 +27,15 @@ export type NotificationProps = {
 export type NotificationListProps = {
   notifications: NotificationData[];
   loading?: boolean;
+  // eslint-disable-next-line no-unused-vars
   onToggleRead: (id: string) => void;
+  // eslint-disable-next-line no-unused-vars
   onDismiss: (id: string) => void;
   // optional: onMarkAllRead?: () => void
 };
+
+export interface NotificationBoxState {
+  notifications: NotificationData[];
+  status: "idle" | "loading" | "failed";
+  error: string | null;
+}
