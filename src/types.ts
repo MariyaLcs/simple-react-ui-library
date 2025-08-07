@@ -36,6 +36,6 @@ export type NotificationListProps = {
 
 export interface NotificationBoxState {
   notifications: NotificationData[];
-  status: "idle" | "loading" | "failed";
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }

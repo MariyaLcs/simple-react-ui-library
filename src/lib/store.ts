@@ -1,36 +1,74 @@
 import type { NotificationData, NotificationBoxState } from "../types";
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  createAsyncThunk,
+  createSlice,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 
-/* ---------- Mock data ---------- */
-const defaultNotifications: NotificationData[] = [
-  { id: "1", message: "New follower!", read: false },
-  { id: "2", message: "System maintenance at 2 PM", read: false },
-  { id: "3", message: "Weekly digest ready", read: true },
-  { id: "4", message: "Update available", read: false },
-];
-
+/*
+ * Creates an asyncThunk to fetch tasks from a remote endpoint.
+ * You can read more about Redux Toolkit's thunks in the docs:
+ * https://redux-toolkit.js.org/api/createAsyncThunk
+ */
+export const fetchNotifications = createAsyncThunk(
+  "notificationBox/fetchNotifications",
+  async () => {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/comments?_limit=10"
+    );
+    const data = await response.json();
+    // map API → NotificationData
+    return data.map(
+      (c: { id: number; body: string }) =>
+        ({
+          id: `${c.id}`,
+          message: c.body,
+          read: false,
+        } satisfies NotificationData)
+    );
+  }
+);
+/* --------------- slice --------------- */
 const initialState: NotificationBoxState = {
-  notifications: defaultNotifications,
+  notifications: [],
   status: "idle",
   error: null,
 };
-
-/* ---------- Slice ---------- */
 const notificationsSlice = createSlice({
   name: "notificationBox",
   initialState,
   reducers: {
     toggleRead: (state, action: PayloadAction<{ id: string }>) => {
-      const item = state.notifications.find((n) => n.id === action.payload.id);
-      if (item) {
-        item.read = !item.read;
-      }
+      const n = state.notifications.find((x) => x.id === action.payload.id);
+      if (n) n.read = !n.read;
     },
     dismissNotification: (state, action: PayloadAction<{ id: string }>) => {
       state.notifications = state.notifications.filter(
-        (n) => n.id !== action.payload.id
+        (x) => x.id !== action.payload.id
       );
     },
+  },
+  /* --- extraReducers mirror the tutorial --- */
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchNotifications.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+        state.notifications = [];
+      })
+      .addCase(
+        fetchNotifications.fulfilled,
+        (state, action: PayloadAction<NotificationData[]>) => {
+          state.status = "succeeded";
+          state.notifications = action.payload;
+        }
+      )
+      .addCase(fetchNotifications.rejected, (state) => {
+        state.status = "failed";
+        state.error = "Something went wrong";
+        state.notifications = [];
+      });
   },
 });
 
