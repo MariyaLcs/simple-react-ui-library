@@ -8,14 +8,12 @@ import {
 
 /*
  * Creates an asyncThunk to fetch tasks from a remote endpoint.
- * You can read more about Redux Toolkit's thunks in the docs:
- * https://redux-toolkit.js.org/api/createAsyncThunk
  */
 export const fetchNotifications = createAsyncThunk(
   "notificationBox/fetchNotifications",
   async () => {
     const response = await fetch(
-      "https://jsonplaceholder.typicode.com/comments?_limit=10"
+      "https://jsonplaceholder.typicode.com/comments?_limit=5"
     );
     const data = await response.json();
     // map API → NotificationData
@@ -49,7 +47,6 @@ const notificationsSlice = createSlice({
       );
     },
   },
-  /* --- extraReducers mirror the tutorial --- */
   extraReducers: (builder) => {
     builder
       .addCase(fetchNotifications.pending, (state) => {
