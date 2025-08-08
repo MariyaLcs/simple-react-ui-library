@@ -9,22 +9,23 @@ import {
 /*
  * Creates an asyncThunk to fetch tasks from a remote endpoint.
  */
-export const fetchNotifications = createAsyncThunk(
+export const fetchNotifications = createAsyncThunk<NotificationData[]>(
   "notificationBox/fetchNotifications",
   async () => {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/comments?_limit=5"
+    const res = await fetch(
+      "https://jsonplaceholder.typicode.com/users?_limit=5"
     );
-    const data = await response.json();
-    // map API → NotificationData
-    return data.map(
-      (c: { id: number; body: string }) =>
-        ({
-          id: `${c.id}`,
-          message: c.body,
-          read: false,
-        } satisfies NotificationData)
-    );
+    const users = (await res.json()) as Array<{
+      id: number;
+      name: string;
+    }>;
+
+    // Use username for shorter messages; switch to name if you prefer full names
+    return users.map((u) => ({
+      id: String(u.id),
+      message: `${u.name} followed you`,
+      read: false,
+    }));
   }
 );
 /* --------------- slice --------------- */
