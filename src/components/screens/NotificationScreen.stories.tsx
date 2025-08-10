@@ -6,14 +6,7 @@ import { MockedState } from "../organisms/NotificationList/NotificationList.stor
 
 import NotificationScreen from "./NotificationScreen";
 import store from "../../lib/store";
-import {
-  fireEvent,
-  waitFor,
-  within,
-  waitForElementToBeRemoved,
-  expect,
-  userEvent,
-} from "@storybook/test";
+import { within, expect, userEvent } from "@storybook/test";
 const meta = {
   component: NotificationScreen,
   title: "Screens/NotificationScreen",
