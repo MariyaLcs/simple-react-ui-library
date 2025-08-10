@@ -6,7 +6,14 @@ import { MockedState } from "../organisms/NotificationList/NotificationList.stor
 
 import NotificationScreen from "./NotificationScreen";
 import store from "../../lib/store";
-
+import {
+  fireEvent,
+  waitFor,
+  within,
+  waitForElementToBeRemoved,
+  expect,
+  userEvent,
+} from "@storybook/test";
 const meta = {
   component: NotificationScreen,
   title: "Screens/NotificationScreen",
@@ -32,6 +39,22 @@ export const Default: Story = {
         ),
       ],
     },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // wait for the list to load (any one button is fine)
+    const markReadButtons = await canvas.findAllByRole("button", {
+      name: /Mark Read/i,
+    });
+    await new Promise((r) => setTimeout(r, 1000));
+    // click the first "Mark Read"
+    await userEvent.click(markReadButtons[0]);
+
+    // expect it to flip to "Mark Unread"
+    await expect(
+      await canvas.findByRole("button", { name: /Mark Unread/i })
+    ).toBeInTheDocument();
   },
 };
 
