@@ -13,18 +13,21 @@ export const fetchNotifications = createAsyncThunk<NotificationData[]>(
   "notificationBox/fetchNotifications",
   async () => {
     const res = await fetch(
-      "https://jsonplaceholder.typicode.com/users?_limit=5"
+      "https://jsonplaceholder.typicode.com/todos?userId=1"
     );
-    const users = (await res.json()) as Array<{
-      id: number;
-      name: string;
-    }>;
+    const raw = await res.json();
 
-    // Use username for shorter messages; switch to name if you prefer full names
-    return users.map((u) => ({
-      id: String(u.id),
-      message: `${u.name} followed you`,
-      read: false,
+    // Normalize to { id, message, read } no matter what the server returns
+    return (raw as any[]).map((item) => ({
+      id: String(item.id),
+      message:
+        typeof item.message === "string"
+          ? item.message
+          : String(item.title ?? ""), // map 'title' -> 'message' for /todos
+      read:
+        typeof item.read === "boolean"
+          ? item.read
+          : Boolean(item.completed ?? false), // fallback for /todos
     }));
   }
 );

@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Provider } from "react-redux";
+import { http, HttpResponse } from "msw";
+
+import { MockedState } from "../organisms/NotificationList/NotificationList.stories";
 
 import NotificationScreen from "./NotificationScreen";
 import store from "../../lib/store";
@@ -20,5 +23,27 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Error: Story = {};
+export const Default: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get("https://jsonplaceholder.typicode.com/todos", () =>
+          HttpResponse.json(MockedState.notifications)
+        ),
+      ],
+    },
+  },
+};
+
+export const Error: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get(
+          "https://jsonplaceholder.typicode.com/todos",
+          () => new HttpResponse(null, { status: 403 })
+        ),
+      ],
+    },
+  },
+};
