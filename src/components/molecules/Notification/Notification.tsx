@@ -9,7 +9,11 @@ export default function Notification({
 }: NotificationProps) {
   return (
     <div className={`notification-item ${read ? "read" : "unread"}`}>
-      <div className="notification-main" aria-label={message}>
+      <div
+        className="notification-main"
+        aria-label={message}
+        style={{ backgroundColor: "red" }}
+      >
         <span className="notification-message">{message}</span>
       </div>
       <div className="notification-actions">
