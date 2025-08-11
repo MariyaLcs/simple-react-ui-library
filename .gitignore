@@ -33,3 +33,6 @@ build-storybook.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Storybook
+storybook-static/
