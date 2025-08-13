@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
+import "../src/styles/tokens.css";
 
 initialize({ onUnhandledRequest: "bypass" });
 
@@ -14,3 +15,25 @@ const preview: Preview = {
 };
 
 export default preview;
+
+export const globalTypes = {
+  theme: {
+    name: "Theme",
+    description: "Global theme",
+    defaultValue: "light",
+    toolbar: {
+      icon: "mirror",
+      items: [
+        { value: "light", title: "Light" },
+        { value: "dark", title: "Dark" },
+      ],
+    },
+  },
+};
+
+export const decorators = [
+  (Story, { globals }) => {
+    document.documentElement.setAttribute("data-theme", globals.theme);
+    return Story();
+  },
+];
