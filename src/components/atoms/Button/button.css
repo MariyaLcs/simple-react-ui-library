@@ -1,11 +1,10 @@
 .storybook-button {
   display: inline-block;
   cursor: pointer;
-  line-height: 1;
-  font-weight: 700;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: var(--sb-line-normal);
+  font-family: var(--sb-font-sans);
+  font-weight: var(--sb-font-weight-bold);
 
-  /* use CSS variables */
   color: var(--sb-text);
   background: var(--sb-surface);
   border: 1px solid var(--sb-border);
@@ -15,10 +14,11 @@
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
+/* Variants */
 .storybook-button--primary {
   background: var(--sb-primary);
   border-color: var(--sb-primary);
-  color: #fff;
+  color: var(--sb-on-primary);
 }
 
 .storybook-button--secondary {
@@ -28,16 +28,15 @@
   box-shadow: none;
 }
 
-/* sizes unchanged */
 .storybook-button--small {
   padding: 10px 16px;
-  font-size: 12px;
+  font-size: var(--sb-font-size-xs);
 }
 .storybook-button--medium {
   padding: 11px 20px;
-  font-size: 14px;
+  font-size: var(--sb-font-size-sm);
 }
 .storybook-button--large {
   padding: 12px 24px;
-  font-size: 16px;
+  font-size: var(--sb-font-size-md);
 }

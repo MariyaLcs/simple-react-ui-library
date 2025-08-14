@@ -1,0 +1,14 @@
+:root {
+  --sb-font-sans: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --sb-font-weight-regular: 400;
+  --sb-font-weight-bold: 700;
+
+  --sb-font-size-xs: 12px;
+  --sb-font-size-sm: 14px;
+  --sb-font-size-md: 16px;
+  --sb-font-size-lg: 18px;
+
+  --sb-line-tight: 1.2;
+  --sb-line-normal: 1.5;
+}
