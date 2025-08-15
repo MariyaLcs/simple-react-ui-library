@@ -56,6 +56,9 @@ export const PrimaryStates: Story = {
       <div className="sbx-active">
         <Button {...args} label="Active" />
       </div>
+      <div className="sbx-focus">
+        <Button {...args} label="Focused" />
+      </div>
       <Button {...args} disabled label="Disabled" />
     </div>
   ),
@@ -72,6 +75,9 @@ export const SecondaryStates: Story = {
       </div>
       <div className="sbx-active">
         <Button {...args} label="Active" />
+      </div>
+      <div className="sbx-focus">
+        <Button {...args} label="Focused" />
       </div>
       <Button {...args} disabled label="Disabled" />
     </div>
