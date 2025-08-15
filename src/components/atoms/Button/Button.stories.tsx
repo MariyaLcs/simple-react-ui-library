@@ -48,7 +48,7 @@ export const PrimaryStates: Story = {
   name: "Primary / states",
   args: { primary: true, label: "Button" },
   render: (args) => (
-    <div style={{ display: "grid", gap: 12, maxWidth: 360 }}>
+    <div style={{ display: "flex", gap: 12, maxWidth: 360 }}>
       <Button {...args} label="Default" />
       <div className="sbx-hover">
         <Button {...args} label="Hover" />
@@ -68,7 +68,7 @@ export const SecondaryStates: Story = {
   name: "Secondary / states",
   args: { primary: false, label: "Button" },
   render: (args) => (
-    <div style={{ display: "grid", gap: 12, maxWidth: 360 }}>
+    <div style={{ display: "flex", gap: 12, maxWidth: 360 }}>
       <Button {...args} label="Default" />
       <div className="sbx-hover">
         <Button {...args} label="Hover" />

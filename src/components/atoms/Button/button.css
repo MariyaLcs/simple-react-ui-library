@@ -40,24 +40,51 @@
   padding: 12px 24px;
   font-size: var(--sb-font-size-md);
 }
-.storybook-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-.sbx-hover .storybook-button:not(:disabled) {
-  filter: brightness(0.97);
-}
-.sbx-active .storybook-button:not(:disabled) {
-  filter: brightness(0.92);
-}
-.storybook-button:focus,
-.storybook-button:focus-visible {
-  outline: 2px solid var(--sb-primary);
-  outline-offset: 2px;
+
+.sbx-hover .storybook-button--primary:not(:disabled),
+.storybook-button--primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--sb-primary) 92%, white);
+  border-color: color-mix(in srgb, var(--sb-primary) 92%, white);
 }
 
-.sbx-focus .storybook-button {
+.sbx-active .storybook-button--primary:not(:disabled),
+.storybook-button--primary:active:not(:disabled) {
+  background: color-mix(in srgb, var(--sb-primary) 85%, black);
+  border-color: color-mix(in srgb, var(--sb-primary) 85%, black);
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.sbx-hover .storybook-button--secondary:not(:disabled),
+.storybook-button--secondary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--sb-surface) 92%, var(--sb-text));
+  border-color: color-mix(in srgb, var(--sb-border) 70%, var(--sb-text));
+}
+
+.sbx-active .storybook-button--secondary:not(:disabled),
+.storybook-button--secondary:active:not(:disabled) {
+  background: color-mix(in srgb, var(--sb-surface) 85%, var(--sb-text));
+  border-color: color-mix(in srgb, var(--sb-border) 55%, var(--sb-text));
+  transform: translateY(1px);
+}
+
+.sbx-active .storybook-button:not(:disabled),
+.storybook-button:active:not(:disabled) {
+  filter: brightness(0.92);
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.storybook-button--primary:focus,
+.storybook-button--primary:focus-visible,
+.sbx-focus .storybook-button--primary {
   outline: 2px solid var(--sb-primary);
-  outline-offset: 2px;
+  outline-offset: 3px;
+}
+
+.storybook-button--secondary:focus,
+.storybook-button--secondary:focus-visible,
+.sbx-focus .storybook-button--secondary {
+  outline: 2px solid var(--sb-primary);
+  outline-offset: 3px;
 }
