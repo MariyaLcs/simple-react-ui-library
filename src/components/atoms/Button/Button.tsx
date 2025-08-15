@@ -7,6 +7,7 @@ export const Button = ({
   size = "medium",
   backgroundColor,
   label,
+  disabled = false,
   ...props
 }: ButtonProps) => {
   const mode = primary
@@ -19,6 +20,7 @@ export const Button = ({
         " "
       )}
       style={{ backgroundColor }}
+      disabled={disabled}
       {...props}
     >
       {label}
