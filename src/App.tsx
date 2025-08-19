@@ -1,4 +1,3 @@
-import "index.css";
 import store from "./lib/store";
 import { Provider } from "react-redux";
 import NotificationScreen from "./components/screens/NotificationScreen";

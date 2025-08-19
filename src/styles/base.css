@@ -1,0 +1,65 @@
+/* 1. Box sizing reset (best practice) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: var(--sb-font-sans);
+  font-size: var(--sb-font-size-md);
+  background: var(--sb-surface);
+  color: var(--sb-text);
+}
+
+/* 4. Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 5. Remove link underline */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 6. Smooth scrolling */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* 7. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 8. Remove animations for people who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
