@@ -12,7 +12,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  border-radius: 0.375rem;
+  border-radius: var(--sb-radius);
   background: var(--sb-color-skeleton, #f0f0f0);
 }
 
@@ -48,16 +48,16 @@
 /* ---------- Empty state ---------- */
 .nl-empty-message {
   text-align: center;
-  color: #888;
+  color: var(--sb-text);
   padding: 2rem 0;
 }
 
 .nl-title {
-  font-weight: 600;
+  font-weight: var(--sb-font-weight-bold);
   margin: 0;
 }
 
 .nl-subtitle {
   margin: 0.25rem 0 0;
-  font-size: 0.875rem;
+  font-size: var(--sb-font-size-sm);
 }
