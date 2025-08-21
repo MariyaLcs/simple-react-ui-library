@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import { initialize, mswLoader } from "msw-storybook-addon";
+import { initialize, mswLoader, mswDecorator } from "msw-storybook-addon";
 import "../src/styles/tokens.css";
 import "../src/styles/tokens.typography.css";
 import "../src/styles/base.css";
@@ -34,6 +34,7 @@ export const globalTypes = {
 };
 
 export const decorators = [
+  mswDecorator,
   (Story, { globals }) => {
     document.documentElement.setAttribute("data-theme", globals.theme);
     return Story();

@@ -17,18 +17,19 @@ export const fetchNotifications = createAsyncThunk<NotificationData[]>(
     );
     const raw = await res.json();
 
-    // Normalize to { id, message, read } no matter what the server returns
-    return (raw as any[]).map((item) => ({
-      id: String(item.id),
-      message:
-        typeof item.message === "string"
-          ? item.message
-          : String(item.title ?? ""), // map 'title' -> 'message' for /todos
-      read:
-        typeof item.read === "boolean"
-          ? item.read
-          : Boolean(item.completed ?? false), // fallback for /todos
-    }));
+    return (raw as any[])
+      .slice(0, 3) // ← only take three
+      .map((item) => ({
+        id: String(item.id),
+        message:
+          typeof item.message === "string"
+            ? item.message
+            : String(item.title ?? ""),
+        read:
+          typeof item.read === "boolean"
+            ? item.read
+            : Boolean(item.completed ?? false),
+      }));
   }
 );
 /* --------------- slice --------------- */
@@ -82,6 +83,10 @@ const store = configureStore({
     notificationBox: notificationsSlice.reducer,
   },
 });
+export const makeStore = () =>
+  configureStore({
+    reducer: { notificationBox: notificationsSlice.reducer },
+  });
 
 /* ---------- Types ---------- */
 export type RootState = ReturnType<typeof store.getState>;
