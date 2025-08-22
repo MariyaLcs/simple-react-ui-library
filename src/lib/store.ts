@@ -12,24 +12,20 @@ import {
 export const fetchNotifications = createAsyncThunk<NotificationData[]>(
   "notificationBox/fetchNotifications",
   async () => {
-    const res = await fetch(
-      "https://jsonplaceholder.typicode.com/todos?userId=1"
-    );
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
     const raw = await res.json();
 
     return (raw as any[])
       .slice(0, 3) // ← only take three
-      .map((item) => ({
-        id: String(item.id),
-        message:
-          typeof item.message === "string"
-            ? item.message
-            : String(item.title ?? ""),
-        read:
-          typeof item.read === "boolean"
-            ? item.read
-            : Boolean(item.completed ?? false),
-      }));
+      .map((item) => {
+        const title = String(item.title ?? "");
+        const message = title.length > 50 ? title.slice(0, 50) + "..." : title;
+        return {
+          id: String(item.id),
+          message,
+          read: false,
+        };
+      });
   }
 );
 /* --------------- slice --------------- */
