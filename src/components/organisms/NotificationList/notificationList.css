@@ -55,9 +55,12 @@
 .nl-title {
   font-weight: var(--sb-font-weight-bold);
   margin: 0;
+  font-size: var(--sb-font-size-h5);
+  line-height: var(--sb-line-tight);
 }
 
 .nl-subtitle {
   margin: 0.25rem 0 0;
   font-size: var(--sb-font-size-sm);
+  line-height: var(--sb-line-normal);
 }

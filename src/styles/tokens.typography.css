@@ -1,14 +1,28 @@
 :root {
   --sb-font-sans: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   --sb-font-weight-regular: 400;
   --sb-font-weight-bold: 700;
 
-  --sb-font-size-xs: 12px;
-  --sb-font-size-sm: 14px;
-  --sb-font-size-md: 16px;
-  --sb-font-size-lg: 18px;
+  --sb-step--1: clamp(0.875rem, 0.82rem + 0.2vw, 0.9375rem); /* ≈14–15 */
+  --sb-step-0: clamp(1rem, 0.94rem + 0.3vw, 1.0625rem); /* ≈16–17 */
+  --sb-step-1: clamp(1.125rem, 1.02rem + 0.6vw, 1.375rem); /* ≈18–22 */
+  --sb-step-2: clamp(1.375rem, 1.18rem + 1.2vw, 1.75rem); /* ≈22–28 */
+  --sb-step-3: clamp(1.75rem, 1.5rem + 1.8vw, 2.5rem); /* ≈28–40 */
+
+  --sb-font-size-label: var(--sb-step--1);
+  --sb-font-size-body: var(--sb-step-0);
+  --sb-font-size-h6: var(--sb-step-0);
+  --sb-font-size-h5: var(--sb-step-1);
+  --sb-font-size-h4: var(--sb-step-2);
+  --sb-font-size-h3: var(--sb-step-3);
+
+  --sb-font-size-xs: var(--sb-step--1);
+  --sb-font-size-sm: var(--sb-step-0);
+  --sb-font-size-md: var(--sb-step-1);
+  --sb-font-size-lg: var(--sb-step-2);
 
   --sb-line-tight: 1.2;
   --sb-line-normal: 1.5;
+  --sb-tracking-tight: -0.01em;
+  --sb-tracking-normal: 0;
 }
