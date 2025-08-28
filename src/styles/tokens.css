@@ -1,7 +1,3 @@
-@custom-media --sb-bp-sm (width >= 393px);
-@custom-media --sb-bp-md (width >= 768px);
-@custom-media --sb-bp-lg (width >= 1280px);
-
 :root {
   /* colors / surfaces */
   --sb-primary: #6750a4;
