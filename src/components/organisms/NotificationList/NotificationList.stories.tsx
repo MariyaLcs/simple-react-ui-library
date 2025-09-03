@@ -85,13 +85,7 @@ const MockStore = ({
 const meta = {
   component: NotificationList,
   title: "Organisms/NotificationList",
-  decorators: [
-    (Story) => (
-      <div style={{ margin: "3rem" }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [(Story) => <Story />],
   tags: ["autodocs"],
   excludeStories: /.*MockedState$/,
 } satisfies Meta<typeof NotificationList>;
