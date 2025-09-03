@@ -11,7 +11,7 @@ export default {
     postcssGlobalData({ files: [mediaFile] }),
     postcssPresetEnv({
       stage: 3,
-      features: { "custom-media-queries": true },
+      features: { "custom-media-queries": true, "nesting-rules": true },
     }),
   ],
 };
