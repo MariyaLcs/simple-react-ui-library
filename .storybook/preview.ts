@@ -16,6 +16,7 @@ const customViewports = {
 
 const preview: Preview = {
   parameters: {
+    layout: "fullscreen",
     viewport: {
       viewports: customViewports,
       defaultViewport: "laptop",
