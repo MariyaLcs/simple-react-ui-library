@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Notification > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="notification-item unread"
+  >
+    <div
+      aria-label="Message 1"
+      class="notification-main"
+    >
+      <span
+        class="notification-message"
+      >
+        Message 1
+      </span>
+    </div>
+    <div
+      class="notification-actions"
+    >
+      <button>
+        Mark Read
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
