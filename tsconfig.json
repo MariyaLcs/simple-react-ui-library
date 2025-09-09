@@ -5,10 +5,6 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "types": [
-      "vitest/globals",
-      "@testing-library/jest-dom",
-      "vitest-axe/extend-expect"
-    ]
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   }
 }

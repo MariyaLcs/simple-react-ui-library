@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Notification from "./Notification";
-import { axe } from "vitest-axe";
+import { axe } from "jest-axe";
 
 // Mock the Button atom used inside Notification
 vi.mock("../../atoms/Button/Button", () => ({
