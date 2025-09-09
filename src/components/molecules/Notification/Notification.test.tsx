@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Notification from "./Notification";
+import { axe } from "vitest-axe";
 
 // Mock the Button atom used inside Notification
 vi.mock("../../atoms/Button/Button", () => ({
@@ -51,5 +52,18 @@ describe("Notification", () => {
     ).toBeInTheDocument();
     const item = container.querySelector(".notification-item");
     expect(item).toHaveClass("read");
+  });
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <Notification notification={base} onToggleRead={() => {}} />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("has no a11y violations", async () => {
+    const { container } = render(
+      <Notification notification={base} onToggleRead={() => {}} />
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
