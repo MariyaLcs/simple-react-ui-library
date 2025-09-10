@@ -1,0 +1,100 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NotificationList > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nl-list"
+  >
+    <div
+      class="notification-item unread"
+    >
+      <div
+        aria-label="Message 1"
+        class="notification-main"
+      >
+        <span
+          class="notification-message"
+        >
+          Message 1
+        </span>
+      </div>
+      <div
+        class="notification-actions"
+      >
+        <button
+          class="storybook-button storybook-button--small storybook-button--secondary"
+          type="button"
+        >
+          Mark Read
+        </button>
+        <button
+          class="storybook-button storybook-button--small storybook-button--secondary"
+          type="button"
+        >
+          Dismiss
+        </button>
+      </div>
+    </div>
+    <div
+      class="notification-item unread"
+    >
+      <div
+        aria-label="Message 3"
+        class="notification-main"
+      >
+        <span
+          class="notification-message"
+        >
+          Message 3
+        </span>
+      </div>
+      <div
+        class="notification-actions"
+      >
+        <button
+          class="storybook-button storybook-button--small storybook-button--secondary"
+          type="button"
+        >
+          Mark Read
+        </button>
+        <button
+          class="storybook-button storybook-button--small storybook-button--secondary"
+          type="button"
+        >
+          Dismiss
+        </button>
+      </div>
+    </div>
+    <div
+      class="notification-item read"
+    >
+      <div
+        aria-label="Message 2"
+        class="notification-main"
+      >
+        <span
+          class="notification-message"
+        >
+          Message 2
+        </span>
+      </div>
+      <div
+        class="notification-actions"
+      >
+        <button
+          class="storybook-button storybook-button--small storybook-button--primary"
+          type="button"
+        >
+          Mark Unread
+        </button>
+        <button
+          class="storybook-button storybook-button--small storybook-button--secondary"
+          type="button"
+        >
+          Dismiss
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
