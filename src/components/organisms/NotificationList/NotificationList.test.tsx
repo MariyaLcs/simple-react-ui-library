@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import NotificationList from "./NotificationList";
+import { axe } from "jest-axe";
 import type { NotificationBoxState } from "../../../types";
 
 function renderWithState(state: NotificationBoxState) {
@@ -46,5 +47,14 @@ describe("NotificationList", () => {
     expect(screen.getByText("Message 2")).toBeInTheDocument();
     expect(screen.getByText("Message 3")).toBeInTheDocument();
     expect(container.querySelectorAll(".notification-item").length).toBe(3);
+  });
+  it("matches snapshot", () => {
+    const { asFragment } = renderWithState(baseState);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("has no a11y violations", async () => {
+    const { container } = renderWithState(baseState);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
